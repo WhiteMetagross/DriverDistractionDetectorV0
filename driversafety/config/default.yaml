@@ -1,0 +1,50 @@
+app:
+  window_title: "About/Settings"
+  max_width: 1280
+  max_height: 720
+
+# Model file locations and brief documentation
+# - models/yolo/yolov8_driver_face_detector.pt: YOLOv8 detector weights for driver/face region detection (provided by you)
+# - models/xgboost/resnet_features_behavior_classifier.json: Primary XGBoost behavior classifier trained on ResNet50 features (provided by you)
+# - models/xgboost/xg_driver.json: Optional alternate XGBoost classifier (older/alternate variant; kept as-is)
+# - models/pytorch/legacy_pytorch_driver_activity.pth: Legacy PyTorch checkpoint (likely driver activity classifier; unused)
+# - models/pytorch/legacy_pytorch_checkpoint_4.pth: Legacy PyTorch checkpoint (unknown; unused)
+models:
+  yolo_model_path: "models/yolo/yolov8_driver_face_detector.pt"
+  xgb_model_path: "models/xgboost/resnet_features_behavior_classifier.json"
+  resnet_variant: "resnet50"
+
+processing:
+  confidence_threshold: 0.1  # Lowered from 0.15 to 0.1 for maximum detection sensitivity
+  max_detections: 5
+  resize_width: 960
+
+# Performance optimization settings
+performance:
+  # Multi-threading
+  max_worker_threads: 19  # 80% of available CPU cores
+  enable_parallel_processing: true
+
+  # GPU acceleration
+  enable_cuda: true
+  enable_fp16: true  # Half-precision for faster inference
+  gpu_memory_fraction: 0.8  # Use 80% of GPU memory
+
+  # Frame processing
+  enable_frame_skipping: true
+  max_frame_queue_size: 10
+  target_fps: 25
+
+  # Caching
+  enable_model_caching: true
+  cache_gradcam_results: false  # Disable for real-time accuracy
+
+  # Optimization method selection (Windows 11 compatible)
+  # Options: "jit_trace", "jit_script", "tensorrt", "channels_last", "fusion", "baseline"
+  # Benchmark results: jit_trace=208.9 FPS, channels_last=171.8 FPS, baseline=161.3 FPS
+  optimization_method: "jit_trace"  # Best performing: JIT tracing (Windows compatible)
+
+  # Legacy flags (deprecated)
+  torch_compile: false  # Disabled due to Triton dependency on Windows
+  tensorrt_optimization: false  # Use optimization_method: "tensorrt" instead
+
