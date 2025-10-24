@@ -24,39 +24,39 @@ This application aims to enhance road safety by identifying potentially dangerou
 
 ```
 DriverBehaviorDistractionv1/
-+-- driversafety/
-|   +-- __init__.py
-|   +-- config/
-|   |   +-- default.yaml                 # Configuration file
-|   |   +-- loader.py                    # Config loader
-|   +-- detection/
-|   |   +-- face_detector.py             # YOLO-based driver detection
-|   +-- classification/
-|   |   +-- feature_extractor.py         # ResNet50 feature extraction
-|   |   +-- behavior_classifier.py       # XGBoost classifier
-|   +-- visualization/
-|   |   +-- gradcam.py                   # Grad-CAM utilities
-|   |   +-- edges.py                     # Canny edge visualization
-|   |   +-- overlays.py                  # Heatmap overlays
-|   +-- gui/
-|       +-- app.py                       # Application entry point
-|       +-- main_window.py               # Main GUI window
-|       +-- video_worker.py              # Background processing thread
-|       +-- windows/                     # Additional GUI windows
-+-- models/
-|   +-- yolo/
-|   |   +-- yolov8_driver_face_detector.pt
-|   +-- xgboost/
-|   |   +-- resnet_features_behavior_classifier.json
-|   +-- pytorch/
-|       +-- (legacy models)
-+-- main.py                              # Application launcher
-+-- requirements.txt                     # Python dependencies
-+-- setup.ps1                            # Setup script (PowerShell)
-+-- start.ps1                            # Start script (PowerShell)
-+-- InstallationAndSetup.md              # Installation guide
-+-- Usage.md                             # Usage documentation
-+-- LICENSE.md                           # License information
+├── driversafety/
+│   ├── __init__.py
+│   ├── config/
+│   │   ├── default.yaml                 # Configuration file
+│   │   └── loader.py                    # Config loader
+│   ├── detection/
+│   │   └── face_detector.py             # YOLO-based driver detection
+│   ├── classification/
+│   │   ├── feature_extractor.py         # ResNet50 feature extraction
+│   │   └── behavior_classifier.py       # XGBoost classifier
+│   ├── visualization/
+│   │   ├── gradcam.py                   # Grad-CAM utilities
+│   │   ├── edges.py                     # Canny edge visualization
+│   │   └── overlays.py                  # Heatmap overlays
+│   └── gui/
+│       ├── app.py                       # Application entry point
+│       ├── main_window.py               # Main GUI window
+│       ├── video_worker.py              # Background processing thread
+│       └── windows/                     # Additional GUI windows
+├── models/
+│   ├── yolo/
+│   │   └── yolov8_driver_face_detector.pt
+│   ├── xgboost/
+│   │   └── resnet_features_behavior_classifier.json
+│   └── pytorch/
+│       └── (legacy models)
+├── main.py                              # Application launcher
+├── requirements.txt                     # Python dependencies
+├── setup.ps1                            # Setup script (PowerShell)
+├── start.ps1                            # Start script (PowerShell)
+├── InstallationAndSetup.md              # Installation guide
+├── Usage.md                             # Usage documentation
+└── LICENSE.md                           # License information
 ```
 
 ## Behavior Classification Labels:
